@@ -1,12 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>{% block title %}Leboncoin{% endblock %}</title>
+        {% block stylesheets %}
+        <link href="{{ asset('build/css/app.css') }}" rel="stylesheet" />
+        {% endblock %}
     </head>
     <body>
+        {# Nav bar #}
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+            <a class="navbar-brand" href="{{ path('home') }}">Leboncoin</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Place an Ad</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Deals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">Requests</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        {# Notices #}
+        <div class="container messages-container">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+        {% block javascripts %}
+            <script src="{{ asset('build/js/app.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
