@@ -23,4 +23,20 @@ Then browse your site at http://127.0.0.1:8000
 
 ## Notes
 This come with dummy data for testing the browsing experience. 
-I was about to create the form to create new Adverts but ran out of time. 
+
+I started with creating a simple homepage using Bootstrap. 
+
+I then moved on to creating the entities I determined to be useful for the project - Advert, Category, and City,
+with Advert having a ManyToOne relation to each Category and City. 
+
+I created some fake data with the Fixtures feature to use for testing. 
+
+I then created each _view_ controller and template to browse the adverts. This includes a listing of
+Cities and Categories on the homepage that you can browse and the top level Deals and Requests views. 
+These views are somewhat dynamic to account for either type of Advert - deal or request. 
+
+My next step was to create the form for creating new adverts however I ran out of time. 
+
+Admittedly I could have saved some time by documenting the code less and by copy-pasting any repeated snippets
+of code instead of refactoring to be more scalable, but in my opinion this was worth the sacrifice of time. 
+Or it would be in a real build of something.   
