@@ -9,7 +9,6 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 /**
  * @method Category|null find($id, $lockMode = null, $lockVersion = null)
  * @method Category|null findOneBy(array $criteria, array $orderBy = null)
- * @method Category[]    findAll()
  * @method Category[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class CategoryRepository extends ServiceEntityRepository
@@ -18,6 +17,16 @@ class CategoryRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Category::class);
     }
+
+	/**
+	 * Find all sorted by name
+	 *
+	 * @return Category[]|array
+	 */
+	public function findAll()
+	{
+		return $this->findBy([], ['name' => 'ASC']);
+	}
 
 //    /**
 //     * @return Category[] Returns an array of Category objects

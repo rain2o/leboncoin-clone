@@ -5,7 +5,24 @@
 {% block body %}
 <div class="container">
     <div class="row">
-        <div class="col-12"><h1>Leboncoin</h1></div>
+        <div class="col-sm-6">
+            <h2>Browse by City</h2>
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">Browse All Cities</a>
+                {% for city in cities %}
+                <a href="{{ city.slug }}" class="list-group-item-action list-group-item">{{ city.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h2>Browse by Category</h2>
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">Browse All Categories</a>
+                {% for category in categories %}
+                    <a href="{{ category.slug }}" class="list-group-item-action list-group-item">{{ category.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
