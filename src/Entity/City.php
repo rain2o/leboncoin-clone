@@ -97,6 +97,17 @@ class City
         return $this->adverts;
     }
 
+	/**
+	 * Get count of all adverts for this city
+	 * @todo add filter for type
+	 *
+	 * @return int
+	 */
+	public function getAdvertsCount(): int
+	{
+		return count($this->adverts);
+    }
+
     public function addAdvert(Advert $advert): self
     {
         if (!$this->adverts->contains($advert)) {

@@ -8,18 +8,26 @@
         <div class="col-sm-6">
             <h2>Browse by City</h2>
             <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">Browse All Cities</a>
+                <a href="{{ path('deals') }}" class="list-group-item list-group-item-action">Browse All Cities</a>
                 {% for city in cities %}
-                <a href="{{ city.slug }}" class="list-group-item-action list-group-item">{{ city.name }}</a>
+                <a href="{{ path('city_adverts', {'slug': city.slug}) }}"
+                   class="list-group-item-action list-group-item d-flex justify-content-between align-items-center">
+                    {{ city.name }}
+                    <span class="badge badge-primary badge-pill">{{ city.getAdvertsCount }}</span>
+                </a>
                 {% endfor %}
             </div>
         </div>
         <div class="col-sm-6">
             <h2>Browse by Category</h2>
             <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">Browse All Categories</a>
+                <a href="{{ path('deals') }}" class="list-group-item list-group-item-action">Browse All Categories</a>
                 {% for category in categories %}
-                    <a href="{{ category.slug }}" class="list-group-item-action list-group-item">{{ category.name }}</a>
+                    <a href="{{ path('category_view', {'slug': category.slug}) }}"
+                       class="list-group-item-action list-group-item d-flex justify-content-between align-items-center">
+                        {{ category.name }}
+                        <span class="badge badge-primary badge-pill">{{ category.getAdvertsCount }}</span>
+                    </a>
                 {% endfor %}
             </div>
         </div>

@@ -19,6 +19,42 @@ class AdvertRepository extends ServiceEntityRepository
         parent::__construct($registry, Advert::class);
     }
 
+	/**
+	 * Get all adverts of deal type
+	 *
+	 * @return Advert[]
+	 */
+	public function getAllDeals()
+	{
+		return $this->findByType('deal');
+    }
+
+	/**
+	 * Get all adverts of request type
+	 * @return Advert[]
+	 */
+	public function getAllRequests()
+	{
+		return $this->findByType('request');
+    }
+
+	/**
+	 * Find all adverts by type
+	 *
+	 * @param string $type
+	 *
+	 * @return Advert[]
+	 */
+	public function findByType( $type )
+	{
+		return $this->createQueryBuilder('a')
+		            ->andWhere('a.type = :val')
+		            ->setParameter('val', $type)
+		            ->orderBy('a.createdAt', 'DESC')
+		            ->getQuery()
+		            ->getResult();
+    }
+
 //    /**
 //     * @return Advert[] Returns an array of Advert objects
 //     */

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ advert.title }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>{{ advert.title }}</h1>
+                    </div>
+                    <div class="card-body">
+                        {% if advert.price %}
+                            <p class="price"><strong>Price: </strong>{{ advert.price|localizedcurrency('EUR') }}</p>
+                        {% endif %}
+                        <p class="date"><strong>Posted on: </strong>{{ advert.createdAt|localizeddate('medium') }}</p>
+
+                        {% if advert.description %}
+                            <hr />
+                            <h3>Description</h3>
+                            <p>{{ advert.description }}</p>
+                        {% endif %}
+
+                        {% if advert.city %}
+                            <hr />
+                            <h3>Location</h3>
+                            <p>{{ advert.city.name }}</p>
+                        {% endif %}
+
+                        {% if advert.email or advert.phone %}
+                            <hr />
+                            <h3>Contact</h3>
+                            {% if advert.email %}
+                                <p><a href="mailto: {{ advert.email }}">{{ advert.email }}</a></p>
+                            {% endif %}
+                            {% if advert.phone %}
+                                <p><a href="tel: {{ advert.phone }}">{{ advert.phone }}</a></p>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

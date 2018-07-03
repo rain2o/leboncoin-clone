@@ -97,6 +97,17 @@ class Category
         return $this->adverts;
     }
 
+	/**
+	 * Get count of all adverts for this category
+	 * @todo add filter for type
+	 *
+	 * @return int
+	 */
+	public function getAdvertsCount(): int
+	{
+		return count($this->getAdverts());
+	}
+
     public function addAdvert(Advert $advert): self
     {
         if (!$this->adverts->contains($advert)) {
